@@ -198,6 +198,25 @@
     </script>
   
 	{{ shop.metafields.loox["global_html_body"] }}
+    <script>
+
+   jQuery.getJSON('http://freegeoip.net/json/';, function(location) {
+
+   // check if a user is from Israel
+
+  if (location.country_code == 'IL') {
+
+    $("#currencies").val("ILS");
+
+    $("#currencies").change();
+
+  }
+
+  // add more countries here
+
+}
+
+</script><div class="open_grepper_editor" title="Edit & Save To Grepper"></div>
 </body>
 </html>
 {% endcapture %}
