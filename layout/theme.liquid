@@ -55,7 +55,12 @@
   {% include 'alireviews_core' %} 
  
 	{{ shop.metafields.loox["global_html_head"] }}
-</head>
+
+<script>
+window.mlvedaShopCurrency = "{{ shop.currency }}";
+window.shopCurrency = "{{ shop.currency }}";
+window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+</script></head>
   {% if template contains "index" %}
     {% assign feature_image = true %}
   {% elsif template contains "collection" %}
@@ -219,7 +224,7 @@
 </script><div class="open_grepper_editor" title="Edit & Save To Grepper"></div>
 {{ "/services/javascripts/currencies.js" | script_tag }}
 {{ "jquery.currencies.min.js" | asset_url | script_tag }}
-</body>
+{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}</body>
 </html>
 {% endcapture %}
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
